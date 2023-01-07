@@ -1,6 +1,6 @@
 # gembrowse
 
-a new gemini browser
+a new gemini browser written in python with qt
 
 ## what is gemini
 
