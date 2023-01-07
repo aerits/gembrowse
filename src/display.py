@@ -14,7 +14,6 @@ def window():
    app = QApplication(sys.argv)
    w = QWidget()
    b = QLabel(w)
-   s = QScrollArea()
 
    # format the text to go into the qlabel
    text=""
