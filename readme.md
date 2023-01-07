@@ -20,8 +20,10 @@ its not too hard to cobble together a gemini browser
 
 * you will be able to go to websites (no way)
 * you will have tabs
-* settings to change how websites look
+* settings to change how websites look (fonts, colors, margins)
 * you will be able to click on links
+* there will be scrolling
+* there will be word wrap
 
 ## cool diagrams
 
