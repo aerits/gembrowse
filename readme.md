@@ -4,7 +4,7 @@ a new gemini browser
 
 ## what is gemini
 
-gemini is an alternative internet protocol to http / https that is really simple
+[gemini](https://gemini.circumlunar.space/) is an alternative internet protocol to http / https that is really simple
 
 the whole point is that some random guy should be able to code a browser for it
 
