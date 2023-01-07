@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #i just tested some code to see if the idea would work
+#scuffed code i will probably replace later
 
 import sys
 from PyQt5.QtCore import *
