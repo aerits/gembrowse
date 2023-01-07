@@ -18,5 +18,5 @@ setup(
     version="0.1",
     description="My GUI application!",
     options={"build_exe": build_exe_options},
-    executables=[Executable("/home/diced/Documents/gembrowse/src/display.py", base=base)],
+    executables=[Executable("src/display.py", base=base)],
 )
