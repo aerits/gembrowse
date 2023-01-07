@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#i made this stuff to test the idea out
+#also i just edited open source code to make this
 
 import cgi
 import mailcap

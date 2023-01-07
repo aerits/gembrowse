@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+#i just tested some code to see if the idea would work
+
 import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
