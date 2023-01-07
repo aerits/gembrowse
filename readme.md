@@ -10,6 +10,8 @@ the whole point is that some random guy should be able to code a browser for it
 
 so i decided to be some random guy coding a browser for it
 
+![image of the browser](https://github.com/aerits/gembrowse/blob/master/images/gembrowse.png?raw=true)
+
 ## features
 
 * you will be able to go to websites (no way)
