@@ -27,6 +27,7 @@ def window():
    w.setGeometry(500,500,500,500)
    b.move(50,20)
    w.setWindowTitle("gembrowse")
+   w.setStyleSheet("background-color: white;")
    w.show()
    sys.exit(app.exec_())
 
