@@ -7,10 +7,16 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 def window():
+   # open up the page
    page = open("page.txt", "r")
+
+   # create qt stuff
    app = QApplication(sys.argv)
    w = QWidget()
    b = QLabel(w)
+   s = QScrollArea()
+
+   # format the text to go into the qlabel
    text=""
    for i in page.readlines():
       if i.startswith('###'):
@@ -23,12 +29,25 @@ def window():
          text=text+"<p>"+i+"</p>"
       page.seek(0)
    text = text.replace('#', '')
+
+   # put the text into the qlabel
    b.setText(text)
+
+   # set size of window
    w.setGeometry(500,500,500,500)
+
+   # move the text to the right slightly
    b.move(50,20)
+
+   # self explanatory
    w.setWindowTitle("gembrowse")
    w.setStyleSheet("background-color: white;")
+
+   # show window
    w.show()
+
+   # close app when you hit the x
    sys.exit(app.exec_())
+
 
 window()
