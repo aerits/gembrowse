@@ -19,3 +19,4 @@ so i decided to be some random guy coding a browser for it
 
 ## cool diagrams
 
+[ah yes flow chart](https://github.com/aerits/gembrowse/blob/master/images/gaming.pdf)
