@@ -12,6 +12,10 @@ so i decided to be some random guy coding a browser for it
 
 ![image of the browser](https://github.com/aerits/gembrowse/blob/master/images/gembrowse.png?raw=true)
 
+^^^ image of what i have right now
+
+its not too hard to cobble together a gemini browser
+
 ## features
 
 * you will be able to go to websites (no way)
