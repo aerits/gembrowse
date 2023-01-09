@@ -18,7 +18,7 @@ i cobbled this together in like an hour
 
 ![image of the browser](https://github.com/aerits/gembrowse/blob/master/images/gembrowse.png?raw=true)
 
-## features
+## proposed features
 
 * you will be able to go to websites (no way)
 * you will have tabs
@@ -30,6 +30,10 @@ i cobbled this together in like an hour
 
 ## cool diagrams
 
+### flow chart
+
 [ah yes flow chart](https://github.com/aerits/gembrowse/blob/master/images/gaming.pdf)
+
+### class diagram
 
 ![ah yes class diagram](https://github.com/aerits/gembrowse/blob/master/images/class%20diagram.png?raw=true)
