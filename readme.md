@@ -31,3 +31,5 @@ i cobbled this together in like an hour
 ## cool diagrams
 
 [ah yes flow chart](https://github.com/aerits/gembrowse/blob/master/images/gaming.pdf)
+
+![ah yes class diagram](https://github.com/aerits/gembrowse/blob/master/images/class%20diagram.png?raw=true)
