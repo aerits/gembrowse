@@ -2,7 +2,7 @@
 
 a new gemini browser written in python with qt
 
-
+![logo](https://github.com/aerits/gembrowse/blob/master/images/logo.png?raw=true)
 
 ## what is gemini
 
