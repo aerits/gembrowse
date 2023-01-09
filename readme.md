@@ -2,6 +2,8 @@
 
 a new gemini browser written in python with qt
 
+
+
 ## what is gemini
 
 [gemini](https://gemini.circumlunar.space/) is an alternative internet protocol to http / https that is really simple
