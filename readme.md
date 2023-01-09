@@ -38,4 +38,4 @@ both are clearly finished as of now
 
 ### class diagram
 
-![ah yes class diagram](https://github.com/aerits/gembrowse/blob/master/images/class%20diagram.png?raw=true)
+![ah yes class diagram](https://github.com/aerits/gembrowse/blob/master/images/classdiagram.png?raw=true)
