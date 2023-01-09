@@ -26,6 +26,7 @@ its not too hard to cobble together a gemini browser
 * you will be able to click on links
 * there will be scrolling
 * there will be word wrap
+* MAYBE have a way to view images from within the browser -- may or may not do this
 
 ## cool diagrams
 
