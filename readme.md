@@ -12,11 +12,11 @@ the whole point is that some random guy should be able to code a browser for it
 
 so i decided to be some random guy coding a browser for it
 
+## image of the browser
+
+i cobbled this together in like an hour
+
 ![image of the browser](https://github.com/aerits/gembrowse/blob/master/images/gembrowse.png?raw=true)
-
-^^^ image of what i have right now
-
-its not too hard to cobble together a gemini browser
 
 ## features
 
