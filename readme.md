@@ -30,6 +30,8 @@ i cobbled this together in like an hour
 
 ## cool diagrams
 
+both are clearly finished as of now
+
 ### flow chart
 
 [ah yes flow chart](https://github.com/aerits/gembrowse/blob/master/images/gaming.pdf)
