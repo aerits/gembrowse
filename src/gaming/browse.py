@@ -85,6 +85,7 @@ def downloadPage(inputurl):
     if mime.startswith("text/"):
 
         #file
+        os.remove("page.txt")
         page = open("page.txt", "a")
 
         # Decode according to declared charset
@@ -129,5 +130,3 @@ def downloadPage(inputurl):
     # Update history
     hist.append(url)
 
-
-downloadPage('gemini://gemini.circumlunar.space')

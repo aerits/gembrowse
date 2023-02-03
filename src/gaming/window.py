@@ -3,69 +3,49 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import sys
+import browse, custWidgets
 
-class ScrollLabel(QScrollArea):
+def loadPage():
+     page = open("page.txt", "r")
 
-    # constructor
-    def __init__(self, *args, **kwargs):
-        QScrollArea.__init__(self, *args, **kwargs)
+     text=""
+     for i in page.readlines():
+         if i.startswith('###'):
+             text=text+"<p><h3>"+i+"</h3></p>"
+         elif i.startswith('##'):
+             text=text+"<p><h2>"+i+"</h2></p>"
+         elif i.startswith('#'):
+             text=text+"<p><h1><u>"+i+"</u></h1></p>"
+         elif i.startswith("*"):
+             text=text+"<p><ul style=\"list-style-type:circle;\">"+i+"</ul></p>"
+         else:
+             text=text+"<p>"+i+"</p>"
+     page.seek(0)
+     text = text.replace('#', '')
 
-        # making widget resizable
-        self.setWidgetResizable(True)
+     return text
 
-        # making qwidget object
-        content = QWidget(self)
-        self.setWidget(content)
-
-        # vertical box layout
-        lay = QVBoxLayout(content)
-
-        # creating label
-        self.label = QLabel(content)
-
-        # setting alignment to the text
-        self.label.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-
-        # making label multi-line
-        self.label.setWordWrap(True)
-
-        # adding label to the layout
-        lay.addWidget(self.label)
-
-    # the setText method
-    def setText(self, text):
-        # setting text to the label
-        self.label.setText(text)
- 
 class PyQtLayout(QWidget):
  
     def __init__(self):
         super().__init__()
         self.UI()
+
  
     def UI(self):
         reload = QPushButton('↻')
         searchbox = QLineEdit('gemini://gemini.circumlunar.space')
         searchbutton = QPushButton('→')
-        displaypage = ScrollLabel(self)
+        displaypage = custWidgets.ScrollLabel(self)
+
+        def bruh():
+            browse.downloadPage(searchbox.text())
+            displaypage.setText(loadPage())
+
+        searchbutton.clicked.connect(bruh)
+        reload.clicked.connect(bruh)
         
-        page = open("page.txt", "r")
-
-        text=""
-        for i in page.readlines():
-            if i.startswith('###'):
-                text=text+"<p>"+"<h3>"+i+"</h3>"+"</p>"
-            elif i.startswith('##'):
-                text=text+"<p>"+"<h2>"+i+"</h2>"+"</p>"
-            elif i.startswith('#'):
-                text=text+"<p>"+"<h1>"+"<u>"+i+"</u>"+"</h1>"+"</p>"
-            else:
-                text=text+"<p>"+i+"</p>"
-            page.seek(0)
-        text = text.replace('#', '')
-
-        displaypage.setText(text)
+        bruh()
 
         grid = QGridLayout()
         grid.addWidget(reload, 0,1)
@@ -74,7 +54,7 @@ class PyQtLayout(QWidget):
         grid.addWidget(displaypage, 1, 1, 3, 3)
  
         self.setLayout(grid)
-        self.setGeometry(300, 300, 250, 150)
+        self.setGeometry(500, 100, 500, 500)
         self.setWindowTitle('gembrowse')
         self.show()
 
