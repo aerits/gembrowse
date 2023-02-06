@@ -18,6 +18,12 @@ i cobbled this together in like an hour
 
 ![image of the browser](https://github.com/aerits/gembrowse/blob/master/images/gembrowse.png?raw=true)
 
+## current features
+
+* you can load pages
+* you can scroll
+* there is word wrap
+
 ## proposed features
 
 * you will be able to go to websites (no way)
