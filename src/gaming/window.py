@@ -37,21 +37,30 @@ class PyQtLayout(QWidget):
         searchbox = QLineEdit('gemini://gemini.circumlunar.space')
         searchbutton = QPushButton('→')
         displaypage = custWidgets.ScrollLabel(self)
+        backbutton = QPushButton('←')
+        history="gemini://gemini.circumlunar.space"
 
         def bruh():
             browse.downloadPage(searchbox.text())
             displaypage.setText(loadPage())
+            history=(searchbox.text)
+
+        def backinhistory():
+            browse.downloadPage(history)
+            displaypage.setText(loadPage())
 
         searchbutton.clicked.connect(bruh)
         reload.clicked.connect(bruh)
+        backbutton.clicked.connect(backinhistory)
         
         bruh()
 
         grid = QGridLayout()
-        grid.addWidget(reload, 0,1)
-        grid.addWidget(searchbox, 0,2)
-        grid.addWidget(searchbutton, 0,3)
-        grid.addWidget(displaypage, 1, 1, 3, 3)
+        grid.addWidget(backbutton, 0,1)
+        grid.addWidget(reload, 0, 2)
+        grid.addWidget(searchbox, 0,3)
+        grid.addWidget(searchbutton, 0,4)
+        grid.addWidget(displaypage, 1, 1, 4, 4)
  
         self.setLayout(grid)
         self.setGeometry(500, 100, 500, 500)
