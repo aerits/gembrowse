@@ -1,11 +1,32 @@
-import sys
-from PyQt5.QtWidgets import *
-from PyQt5 import QtCore, QtGui
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-import browse, custWidgets
-from abc import ABC, abstractmethod
-import os
+#!/usr/bin/env python3
+
+class history():
+     asdf = "bruh"
+     timesWentBackInTime = 0
+     def __init__(self, p: str):
+          self.asdf = p
+
+     def writeHistory(self):
+          self.timesWentBackInTime = 0;
+          hist = open("history.txt", "w+")
+          lines = hist.readlines()
+          hist.seek(0)
+          hist.write(self.asdf+"\n")
+          for line in lines:
+               hist.write(line)
+
+          hist.close()
+     def readHistory(self):
+          hist = open("history.txt", "r")
+          self.timesWentBackInTime+=1
+          hist.seek(0)
+          e = hist.readlines()
+          if self.timesWentBackInTime > len(e)-2:
+               self.timesWentBackInTime-=1
+          print(e[1+self.timesWentBackInTime])
+          print(self.timesWentBackInTime)
+          print(len(e))
+          return e[1+self.timesWentBackInTime]
 
 def loadPage():
      page = open("page.txt", "r")
@@ -28,14 +49,8 @@ def loadPage():
 
      return text
 
-class PyQtLayout(QWidget):
- 
-    def __init__(self):
-        super().__init__()
-        self.UI()
-
- # THIS IS GUI
-    def UI(self):
+class tab(id):
+      
         histor = "e"
         e = history(histor)
         reload = QPushButton('↻')
@@ -55,12 +70,12 @@ class PyQtLayout(QWidget):
         def goBackInTime():
             browse.downloadPage(e.readHistory())
             displaypage.setText(loadPage())
-            
+
 
         searchbutton.clicked.connect(bruh)
         reload.clicked.connect(bruh)
         backbutton.clicked.connect(goBackInTime)
-                
+
         bruh()
 
         # THIS IS A MULTIDIMENTIONAL ARRAY IN A WAY ALRIGHT
@@ -71,17 +86,5 @@ class PyQtLayout(QWidget):
         grid.addWidget(searchbox, 1,3)
         grid.addWidget(searchbutton, 1,4)
         grid.addWidget(displaypage, 2, 1, 4, 4)
- 
-        self.setLayout(grid)
-        self.setGeometry(500, 100, 500, 500)
-        self.setWindowTitle('gembrowse')
-        self.show()
 
-def main():
-    os.remove("history.txt")
-    app = QApplication(sys.argv)
-    ex = PyQtLayout()
-    sys.exit(app.exec_())
- 
-if __name__ == '__main__':
-    main()
+        self.setLayout(grid)
