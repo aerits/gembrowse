@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import browse, custWidgets
+import browse, custWidgets, tabs
 from abc import ABC, abstractmethod
 import os
 
@@ -36,43 +36,8 @@ class PyQtLayout(QWidget):
 
  # THIS IS GUI
     def UI(self):
-        histor = "e"
-        e = history(histor)
-        reload = QPushButton('↻')
-        searchbox = QLineEdit('gemini://gemini.circumlunar.space')
-        searchbutton = QPushButton('→')
-        displaypage = custWidgets.ScrollLabel(self)
-        backbutton = QPushButton('←')
+        e = tabs.tab()
 
-        tabs = custWidgets.MyTabWidget(self)
-
-        def bruh():
-            browse.downloadPage(searchbox.text())
-            displaypage.setText(loadPage())
-            e = history(searchbox.text())
-            e.writeHistory()
-
-        def goBackInTime():
-            browse.downloadPage(e.readHistory())
-            displaypage.setText(loadPage())
-            
-
-        searchbutton.clicked.connect(bruh)
-        reload.clicked.connect(bruh)
-        backbutton.clicked.connect(goBackInTime)
-                
-        bruh()
-
-        # THIS IS A MULTIDIMENTIONAL ARRAY IN A WAY ALRIGHT
-        grid = QGridLayout()
-        grid.addWidget(tabs, 0, 1)
-        grid.addWidget(backbutton, 1,1)
-        grid.addWidget(reload, 1, 2)
-        grid.addWidget(searchbox, 1,3)
-        grid.addWidget(searchbutton, 1,4)
-        grid.addWidget(displaypage, 2, 1, 4, 4)
- 
-        self.setLayout(grid)
         self.setGeometry(500, 100, 500, 500)
         self.setWindowTitle('gembrowse')
         self.show()
