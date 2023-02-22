@@ -55,8 +55,8 @@ def loadPage():
 
      return text
 
-class tab(QWidget):
-     def __init__():
+class tab():
+     def __init__(self, *args, **kwargs):
 
           histor = "e"
           e = history(histor)

@@ -36,7 +36,7 @@ class PyQtLayout(QWidget):
 
  # THIS IS GUI
     def UI(self):
-        e = tabs.tab()
+        e = tabs(self)
 
         self.setGeometry(500, 100, 500, 500)
         self.setWindowTitle('gembrowse')
