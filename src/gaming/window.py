@@ -36,11 +36,27 @@ class PyQtLayout(QWidget):
 
  # THIS IS GUI
     def UI(self):
-        e = tabs(self)
+         # this makes a thing called a dictionary
+         # i have no idea what it is but
+         # it works like a list i guess
+         dictionary_of_tabs = {1:tabs.tab(0)}
 
-        self.setGeometry(500, 100, 500, 500)
-        self.setWindowTitle('gembrowse')
-        self.show()
+         # this is test code that i made to see if i could use
+         # this whole dictionary thing to iteratively make
+         # tabs; it works
+         #
+         #for i in range(1, 10):
+              #dictionary_of_tabs[i] = tabs.tab(i)
+
+         #e = QPushButton('bruh why won\'t this work')
+
+         vbox = QVBoxLayout()
+         vbox.addWidget(dictionary_of_tabs[1])
+         self.setLayout(vbox)
+
+         self.setGeometry(500, 100, 500, 500)
+         self.setWindowTitle('gembrowse')
+         self.show()
 
 def main():
     os.remove("history.txt")
