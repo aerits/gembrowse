@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import browse, custWidgets, tabs
+import browse, custWidgets, tabs, tablist
 from abc import ABC, abstractmethod
 import os
 
@@ -50,7 +50,12 @@ class PyQtLayout(QWidget):
 
          #e = QPushButton('bruh why won\'t this work')
 
+         tab_list = tablist.tablist()
+
          vbox = QVBoxLayout()
+         vbox.setContentsMargins(0,0,0,0)
+         #vbox.setAlignment(QtCore.Qt.AlignTop)
+         vbox.addWidget(tab_list)
          vbox.addWidget(dictionary_of_tabs[1])
          self.setLayout(vbox)
 

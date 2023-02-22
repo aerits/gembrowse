@@ -31,6 +31,7 @@ def loadPage():
 class tab(QWidget):
      def __init__(self, id, parent=None):
           QWidget.__init__(self, parent=parent)
+
           self.id = id
 
           histor = "e"
