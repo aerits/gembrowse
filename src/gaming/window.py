@@ -51,6 +51,7 @@ class PyQtLayout(QWidget):
          #e = QPushButton('bruh why won\'t this work')
 
          tab_list = tablist.tablist()
+         tab_list.tabCreate()
 
          vbox = QVBoxLayout()
          vbox.setContentsMargins(0,0,0,0)
