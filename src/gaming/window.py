@@ -34,7 +34,7 @@ class PyQtLayout(QWidget):
         super().__init__()
         self.UI()
 
- # THIS IS GUI
+# THIS IS GUI
     def UI(self):
          # this makes a thing called a dictionary
          # i have no idea what it is but

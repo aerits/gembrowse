@@ -50,7 +50,7 @@ class tablist(QWidget):
             hbox.addWidget(tab)
             hbox.addWidget(close)
             self.setLayout(hbox)
-            #close.pressed.connect(buttonIsPressed)
+            close.pressed.connect(buttonIsPressed)
     hbox = QHBoxLayout()
     #tabs={}
     #numberOfTabs = 1
