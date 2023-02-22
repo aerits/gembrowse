@@ -6,6 +6,7 @@ from PyQt5.QtCore import *
 import browse, custWidgets, tabs, tablist
 from abc import ABC, abstractmethod
 import os
+import threading
 
 def loadPage():
      page = open("page.txt", "r")
@@ -29,46 +30,54 @@ def loadPage():
      return text
 
 class PyQtLayout(QWidget):
- 
-    def __init__(self):
+     threads = []
+     t = threading.Thread(target=loadPage)
+     threads.append(t)
+
+     def __init__(self):
         super().__init__()
         self.UI()
 
-# THIS IS GUI
-    def UI(self):
-         # this makes a thing called a dictionary
-         # i have no idea what it is but
-         # it works like a list i guess
-         dictionary_of_tabs = {1:tabs.tab(0)}
+     # THIS IS GUI
+     def UI(self):
+          dictionary_of_tabs = {0:tabs.tab(0)}
+          tab_list_dictionary = {0:"gaming", 1:"bruh2"}
+          tab_list = tablist.tablist(tab_list_dictionary)
 
-         # this is test code that i made to see if i could use
-         # this whole dictionary thing to iteratively make
-         # tabs; it works
-         #
-         #for i in range(1, 10):
-              #dictionary_of_tabs[i] = tabs.tab(i)
+          def input():
+                while(True):
+                     tab_list.checkIfYouNeedToCloseIt(tab_list.tabs[0])
 
-         #e = QPushButton('bruh why won\'t this work')
+          t = threading.Thread(target=input)
 
-         tab_list = tablist.tablist()
-         tab_list.tabCreate()
+          t.start()
 
-         vbox = QVBoxLayout()
-         vbox.setContentsMargins(0,0,0,0)
-         #vbox.setAlignment(QtCore.Qt.AlignTop)
-         vbox.addWidget(tab_list)
-         vbox.addWidget(dictionary_of_tabs[1])
-         self.setLayout(vbox)
+          #test code that iteratively adds stuff
+          #to dictionary for reference
+          #for i in range(1, 10):
+                #dictionary_of_tabs[i] = tabs.tab(i)
 
-         self.setGeometry(500, 100, 500, 500)
-         self.setWindowTitle('gembrowse')
-         self.show()
+          #e = QPushButton('bruh why won\'t this work')
+
+          #tab_list = tablist.tablist(tab_list_dictionary)
+          #tab_list.tabCreate()
+
+          vbox = QVBoxLayout()
+          vbox.setContentsMargins(0,0,0,0)
+          #vbox.setAlignment(QtCore.Qt.AlignTop)
+          vbox.addWidget(tab_list)
+          vbox.addWidget(dictionary_of_tabs[0])
+          self.setLayout(vbox)
+
+          self.setGeometry(500, 100, 500, 500)
+          self.setWindowTitle('gembrowse')
+          self.show()
 
 def main():
-    os.remove("history.txt")
-    app = QApplication(sys.argv)
-    ex = PyQtLayout()
-    sys.exit(app.exec_())
- 
+     os.remove("history.txt")
+     app = QApplication(sys.argv)
+     ex = PyQtLayout()
+     sys.exit(app.exec_())
+
 if __name__ == '__main__':
     main()

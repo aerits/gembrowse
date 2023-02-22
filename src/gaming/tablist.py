@@ -12,11 +12,9 @@ class tab(QWidget):
         pressed=True
         print("bruh")
     def isButtonPressed(self):
-        if(pressed==True):
-            print("true")
+        if(self.pressed==True):
             return True
         else:
-            print("false")
             return False
     def __init__(self, name, parent=None):
         QWidget.__init__(self, parent=parent)
@@ -26,29 +24,37 @@ class tab(QWidget):
         hbox.addWidget(tab)
         hbox.addWidget(close)
         self.setLayout(hbox)
-        e = close.pressed.connect(self.buttonIsPressed)
+        close.pressed.connect(self.buttonIsPressed)
 
 class tablist(QWidget):
     hbox = QHBoxLayout()
-    #tabs={}
+    tabs={}
     #numberOfTabs = 1
 
     #tabs[numberOfTabs-1] = tab(numberOfTabs-1)
 
-    def __init__(self, parent=None):
+    def __init__(self, tablistdictionary, parent=None):
         QWidget.__init__(self, parent=parent)
-
+        #tabs = {}
         newtab = QPushButton('+')
-        bruh = tab('bruh')
-        self.hbox.addWidget(newtab)
-        self.hbox.addWidget(bruh)
-        self.setLayout(self.hbox)
 
-        #bruh.close.pressed.connect(tabClose(bruh))
+        hbox1 = QHBoxLayout()
+        hbox1.addLayout(self.hbox)
+        hbox1.addWidget(newtab)
+
+        # add tabs
+        for i in range(len(tablistdictionary)):
+            self.tabs[i] = tab(tablistdictionary[i])
+            self.hbox.addWidget(self.tabs[i])
+        self.setLayout(hbox1)
 
     def tabCreate(self):
-        bruh2 = tab('bruh2')
-        self.hbox.addWidget(bruh2)
+        bruh3 = tab('bruh3')
+        self.hbox.addWidget(bruh3)
 
     def tabClose(self, tab):
         self.hbox.removeWidget(tab)
+
+    def checkIfYouNeedToCloseIt(self, tab):
+        if(tab.isButtonPressed()==True):
+            self.tabClose(tab)
