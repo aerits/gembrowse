@@ -5,7 +5,7 @@ from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import tabs
-"""
+
 class tab(QWidget):
     pressed = False
     def buttonIsPressed(self):
@@ -27,30 +27,8 @@ class tab(QWidget):
         hbox.addWidget(close)
         self.setLayout(hbox)
         e = close.pressed.connect(self.buttonIsPressed)
-"""
-class tablist(QWidget):
 
-    class tab(QWidget):
-        pressed = False
-        def buttonIsPressed(self):
-            pressed=True
-            print("bruh")
-        def isButtonPressed(self):
-            if(pressed==True):
-                print("true")
-                return True
-            else:
-                print("false")
-                return False
-        def __init__(self, name, parent=None):
-            QWidget.__init__(self, parent=parent)
-            tab = QPushButton(name)
-            close = QPushButton('x')
-            hbox = QHBoxLayout()
-            hbox.addWidget(tab)
-            hbox.addWidget(close)
-            self.setLayout(hbox)
-            close.pressed.connect(buttonIsPressed)
+class tablist(QWidget):
     hbox = QHBoxLayout()
     #tabs={}
     #numberOfTabs = 1
@@ -61,7 +39,7 @@ class tablist(QWidget):
         QWidget.__init__(self, parent=parent)
 
         newtab = QPushButton('+')
-        bruh = self.tab('bruh')
+        bruh = tab('bruh')
         self.hbox.addWidget(newtab)
         self.hbox.addWidget(bruh)
         self.setLayout(self.hbox)
@@ -69,7 +47,7 @@ class tablist(QWidget):
         #bruh.close.pressed.connect(tabClose(bruh))
 
     def tabCreate(self):
-        bruh2 = self.tab('bruh2')
+        bruh2 = tab('bruh2')
         self.hbox.addWidget(bruh2)
 
     def tabClose(self, tab):

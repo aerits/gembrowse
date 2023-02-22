@@ -66,6 +66,6 @@ class tab(QWidget):
           grid.addWidget(reload, 1, 2)
           grid.addWidget(searchbox, 1,3)
           grid.addWidget(searchbutton, 1,4)
-          grid.addWidget(displaypage, 2, 1, 4, 4)
+          grid.addWidget(displaypage, 2, 1, 100, 4)
 
           self.setLayout(grid)
