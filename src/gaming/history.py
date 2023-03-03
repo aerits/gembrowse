@@ -25,7 +25,10 @@ class history():
           e = hist.readlines()
           if self.timesWentBackInTime > len(e)-2:
                self.timesWentBackInTime-=1
-          print(e[1+self.timesWentBackInTime])
-          print(self.timesWentBackInTime)
-          print(len(e))
-          return e[1+self.timesWentBackInTime]
+          try:
+               print(e[1+self.timesWentBackInTime])
+               print(self.timesWentBackInTime)
+               print(len(e))
+               return e[1+self.timesWentBackInTime]
+          except:
+               print("can't go back")

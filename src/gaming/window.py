@@ -8,6 +8,8 @@ from abc import ABC, abstractmethod
 import os
 import threading
 
+running=True;
+
 def loadPage():
      page = open("page.txt", "r")
 
@@ -45,8 +47,8 @@ class PyQtLayout(QWidget):
           tab_list = tablist.tablist(tab_list_dictionary)
 
           def input():
-                while(True):
-                     tab_list.checkIfYouNeedToCloseIt(tab_list.tabs[0])
+                while(running):
+                     tab_list.checkIfYouNeedToCloseIt(len(tab_list_dictionary))
 
           t = threading.Thread(target=input)
 
@@ -60,7 +62,7 @@ class PyQtLayout(QWidget):
           #e = QPushButton('bruh why won\'t this work')
 
           #tab_list = tablist.tablist(tab_list_dictionary)
-          #tab_list.tabCreate()
+          tab_list.tabCreate()
 
           vbox = QVBoxLayout()
           vbox.setContentsMargins(0,0,0,0)
