@@ -14,7 +14,7 @@ so i decided to be some random guy coding a browser for it
 
 ## image of the browser
 
-i cobbled this together in like an hour
+this is the latest image of the browser so far
 
 ![image of the browser](https://github.com/aerits/gembrowse/blob/master/images/gembrowse.png?raw=true)
 
@@ -23,6 +23,8 @@ i cobbled this together in like an hour
 * you can load pages
 * you can scroll
 * there is word wrap
+* there is a list of tabs(not fully working)
+* there is history
 
 ## proposed features
 
