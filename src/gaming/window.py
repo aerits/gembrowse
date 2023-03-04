@@ -48,7 +48,9 @@ class PyQtLayout(QWidget):
 
           def input():
                 while(running):
-                     tab_list.checkIfYouNeedToCloseIt(len(tab_list_dictionary))
+                     item = tab_list.checkIfYouNeedToCloseIt(len(tab_list_dictionary))
+                     if(item > -1):
+                          tab_list_dictionary.pop(item)
 
           t = threading.Thread(target=input)
 

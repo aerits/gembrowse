@@ -57,5 +57,11 @@ class tablist(QWidget):
 
     def checkIfYouNeedToCloseIt(self, numOfTabs):
         for i in range(numOfTabs):
+            print(i)
             if(self.tabs[i].pressed=="pressed"):
                 self.tabClose(i)
+                # put a for loop that iterates on the dictionary to remove
+                # every item after this item, also do another in the main
+                # function
+                return i
+        return -1
