@@ -27,7 +27,7 @@ class tablist(QWidget):
     hbox = QHBoxLayout()
     tabs={}
     tabOpen=False
-    #numberOfTabs = 1
+    numberOfTabs = 2
 
     #tabs[numberOfTabs-1] = tab(numberOfTabs-1)
 
@@ -50,17 +50,22 @@ class tablist(QWidget):
         newtab.pressed.connect(self.tabCreate)
 
     def tabCreate(self):
-        self.tabs[2] = tab('New Tab')
-        self.hbox.addWidget(self.tabs[2])
+        self.numberOfTabs+=1
+        self.tabs[self.numberOfTabs-1] = tab('New Tab')
+        self.hbox.addWidget(self.tabs[self.numberOfTabs-1])
+
+    def creatTabNow11(self):
+        self.numberOfTabs+=1
 
     def tabClose(self, i):
         #self.tabs[i].deleteLater()
+        self.numberOfTabs-=1
         self.hbox.removeWidget(self.tabs[i])
         sip.delete(self.tabs[i])
         self.tabs[i] = None
 
     def checkIfYouNeedToCloseIt(self, numOfTabs):
-        for tabNumber in range(numOfTabs):
+        for tabNumber in range(numOfTabs-1):
             #print(self.tabs)
             if(self.tabs[tabNumber].pressed=="pressed"):
                 self.tabClose(tabNumber)
@@ -72,8 +77,11 @@ class tablist(QWidget):
                     os._exit(0)
                 self.tabs.pop(numOfTabs-1)
 
-                return tabNumber
+                return tabNumber-1
         return -1
 
     def checkIfYouNeedToOpenIt(self, numOfTabs):
-        pass
+        if(numOfTabs < self.numberOfTabs):
+            print(self.tabs)
+            return self.numberOfTabs
+        return -1

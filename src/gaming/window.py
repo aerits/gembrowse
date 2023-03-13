@@ -52,12 +52,17 @@ class PyQtLayout(QWidget):
                      item = tab_list.checkIfYouNeedToCloseIt(len(tab_list_dictionary))
                      if(item > -1):
                         tab_list_dictionary.pop(item)
+                        # move back all items in tab_list_dictionary by 1 to replace the space ethat was lost
                         for i in range(item, len(tab_list_dictionary)):
                           tab_list_dictionary[i] = tab_list_dictionary[i+1]
                         if(len(tab_list_dictionary) < 1):
                             os._exit(0)
                         tab_list_dictionary.pop(len(tab_list_dictionary)-1)
                      # open tabs
+                     item = tab_list.checkIfYouNeedToOpenIt(len(tab_list_dictionary))
+                     if(item > -1):
+                        tab_list_dictionary[item] = "New Tab"
+                     #print(tab_list_dictionary)
 
 
           t = threading.Thread(target=input)
@@ -72,8 +77,6 @@ class PyQtLayout(QWidget):
           #e = QPushButton('bruh why won\'t this work')
 
           #tab_list = tablist.tablist(tab_list_dictionary)
-          tab_list.tabCreate()
-          tab_list_dictionary[2] = "bruh3"
 
           vbox = QVBoxLayout()
           vbox.setContentsMargins(0,0,0,0)
