@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import sys
+import os
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
@@ -25,6 +26,7 @@ class tab(QWidget):
 class tablist(QWidget):
     hbox = QHBoxLayout()
     tabs={}
+    tabOpen=False
     #numberOfTabs = 1
 
     #tabs[numberOfTabs-1] = tab(numberOfTabs-1)
@@ -45,8 +47,10 @@ class tablist(QWidget):
         self.setLayout(hbox1)
         #self.tabClose(self.tabs[0])
 
+        newtab.pressed.connect(self.tabCreate)
+
     def tabCreate(self):
-        self.tabs[2] = tab('bruh3')
+        self.tabs[2] = tab('New Tab')
         self.hbox.addWidget(self.tabs[2])
 
     def tabClose(self, i):
@@ -56,12 +60,20 @@ class tablist(QWidget):
         self.tabs[i] = None
 
     def checkIfYouNeedToCloseIt(self, numOfTabs):
-        for i in range(numOfTabs):
-            print(i)
-            if(self.tabs[i].pressed=="pressed"):
-                self.tabClose(i)
-                # put a for loop that iterates on the dictionary to remove
-                # every item after this item, also do another in the main
-                # function
-                return i
+        for tabNumber in range(numOfTabs):
+            #print(self.tabs)
+            if(self.tabs[tabNumber].pressed=="pressed"):
+                self.tabClose(tabNumber)
+
+                self.tabs.pop(tabNumber)
+                for secondTabNumber in range(tabNumber, numOfTabs-1):
+                    self.tabs[secondTabNumber] = self.tabs[secondTabNumber+1]
+                if(numOfTabs < 2):
+                    os._exit(0)
+                self.tabs.pop(numOfTabs-1)
+
+                return tabNumber
         return -1
+
+    def checkIfYouNeedToOpenIt(self, numOfTabs):
+        pass

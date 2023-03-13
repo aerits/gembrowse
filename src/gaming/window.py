@@ -30,7 +30,7 @@ def loadPage():
      text = text.replace('#', '')
 
      return text
-
+t = threading.Thread()
 class PyQtLayout(QWidget):
      threads = []
      t = threading.Thread(target=loadPage)
@@ -48,9 +48,17 @@ class PyQtLayout(QWidget):
 
           def input():
                 while(running):
+                     # close tabs
                      item = tab_list.checkIfYouNeedToCloseIt(len(tab_list_dictionary))
                      if(item > -1):
-                          tab_list_dictionary.pop(item)
+                        tab_list_dictionary.pop(item)
+                        for i in range(item, len(tab_list_dictionary)):
+                          tab_list_dictionary[i] = tab_list_dictionary[i+1]
+                        if(len(tab_list_dictionary) < 1):
+                            os._exit(0)
+                        tab_list_dictionary.pop(len(tab_list_dictionary)-1)
+                     # open tabs
+
 
           t = threading.Thread(target=input)
 
@@ -65,6 +73,7 @@ class PyQtLayout(QWidget):
 
           #tab_list = tablist.tablist(tab_list_dictionary)
           tab_list.tabCreate()
+          tab_list_dictionary[2] = "bruh3"
 
           vbox = QVBoxLayout()
           vbox.setContentsMargins(0,0,0,0)
@@ -78,10 +87,10 @@ class PyQtLayout(QWidget):
           self.show()
 
 def main():
-     os.remove("history.txt")
      app = QApplication(sys.argv)
      ex = PyQtLayout()
-     sys.exit(app.exec_())
+     #sys.exit(app.exec_())
+     app.exec_()
 
 if __name__ == '__main__':
     main()

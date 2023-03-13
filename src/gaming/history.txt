@@ -1,1 +1,9 @@
+
+e
 gemini://gemini.circumlunar.space
+gemini://gemini.circumlunar.space/news
+gemini://gemini.circumlunar.space/docs
+e
+gemini://gemini.circumlunar.space
+gemini://gemini.circumlunar.space/news
+gemini://gemini.circumlunar.space/docs

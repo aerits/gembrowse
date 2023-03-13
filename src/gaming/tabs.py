@@ -38,6 +38,7 @@ class tab(QWidget):
           e = history.history(histor)
           reload = QPushButton('↻')
           searchbox = QLineEdit('gemini://gemini.circumlunar.space')
+          e.writeHistory()
           searchbutton = QPushButton('→')
           displaypage = custWidgets.ScrollLabel(self)
           backbutton = QPushButton('←')
@@ -50,8 +51,13 @@ class tab(QWidget):
                e.writeHistory()
 
           def goBackInTime():
-               browse.downloadPage(e.readHistory())
-               displaypage.setText(loadPage())
+               try:
+                 a = e.readHistory()
+                 browse.downloadPage(a)
+                 displaypage.setText(loadPage())
+                 searchbox.setText(a)
+               except:
+                 print("l moment")
 
 
           searchbutton.clicked.connect(bruh)
