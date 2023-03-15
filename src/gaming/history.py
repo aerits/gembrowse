@@ -9,7 +9,7 @@ class history():
           self.asdf = p
 
      def writeHistory(self):
-          if self.timesWentBackInTime > 0:
+          if(self.timesWentBackInTime >= 1):
                os.remove("history.txt")
                print("noooooo")
                self.timesWentBackInTime = 0
