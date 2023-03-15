@@ -79,6 +79,7 @@ class PyQtLayout(QWidget):
                      #print(tab_list_dictionary)
           # https://stackoverflow.com/questions/36453462/pyqt5-qobject-cannot-create-children-for-a-parent-that-is-in-a-different-thread
           # use this
+          # nevermind, actually create qtimers
           def makeANewTab():
             #dictionary_of_tabs[len(dictionary_of_tabs)] = tabs.tab(len(dictionary_of_tabs))
             vbox.addWidget(dictionary_of_tabs[len(dictionary_of_tabs)-1])
