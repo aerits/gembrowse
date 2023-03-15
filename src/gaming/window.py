@@ -10,6 +10,10 @@ import threading
 
 running=True;
 
+class MySignal(QtCore.QObject):
+    sig_no_args = QtCore.pyqtSignal()
+    sig_with_str = QtCore.pyqtSignal(str)
+
 def loadPage():
      page = open("page.txt", "r")
 
@@ -68,18 +72,19 @@ class PyQtLayout(QWidget):
                      if(item > -1):
                         tab_list_dictionary[item] = "New Tab"
                         dictionary_of_tabs[item] = tabs.tab(item)
-                        signal.alarm(1)
+                        signal.sig_no_args.emit()
                         #vbox.addWidget(dictionary_of_tabs[item])
                         
                      #print(tab_list_dictionary)
           # https://stackoverflow.com/questions/36453462/pyqt5-qobject-cannot-create-children-for-a-parent-that-is-in-a-different-thread
           # use this
-          def makeANewTab(signum, frame):
+          def makeANewTab():
             #dictionary_of_tabs[len(dictionary_of_tabs)] = tabs.tab(len(dictionary_of_tabs))
             vbox.addWidget(dictionary_of_tabs[len(dictionary_of_tabs)-1])
             print("MAKE A NEW TAB BRO")
+          signal = MySignal
 
-          signal.signal(signal.SIGALRM, makeANewTab)
+          signal.sig_no_args.connect(makeANewTab)
           
 
 
