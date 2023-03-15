@@ -34,11 +34,11 @@ class tablist(QWidget):
     def __init__(self, tablistdictionary, parent=None):
         QWidget.__init__(self, parent=parent)
         #tabs = {}
-        newtab = QPushButton('+')
+        self.newtab = QPushButton('+')
 
         hbox1 = QHBoxLayout()
         hbox1.addLayout(self.hbox)
-        hbox1.addWidget(newtab)
+        hbox1.addWidget(self.newtab)
 
         # add tabs
         for i in range(len(tablistdictionary)):
@@ -47,7 +47,7 @@ class tablist(QWidget):
         self.setLayout(hbox1)
         #self.tabClose(self.tabs[0])
 
-        newtab.pressed.connect(self.tabCreate)
+        self.newtab.pressed.connect(self.tabCreate)
 
     def tabCreate(self):
         self.numberOfTabs+=1

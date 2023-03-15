@@ -43,7 +43,7 @@ class PyQtLayout(QWidget):
      # THIS IS GUI
      def UI(self):
           dictionary_of_tabs = {0:tabs.tab(0)}
-          tab_list_dictionary = {0:"gaming", 1:"bruh2"}
+          tab_list_dictionary = {0:"New Tab"}
           tab_list = tablist.tablist(tab_list_dictionary)
 
           def input():
@@ -67,7 +67,20 @@ class PyQtLayout(QWidget):
                      
                      if(item > -1):
                         tab_list_dictionary[item] = "New Tab"
+                        dictionary_of_tabs[item] = tabs.tab(item)
+                        signal.alarm(1)
+                        #vbox.addWidget(dictionary_of_tabs[item])
+                        
                      #print(tab_list_dictionary)
+          # https://stackoverflow.com/questions/36453462/pyqt5-qobject-cannot-create-children-for-a-parent-that-is-in-a-different-thread
+          # use this
+          def makeANewTab(signum, frame):
+            #dictionary_of_tabs[len(dictionary_of_tabs)] = tabs.tab(len(dictionary_of_tabs))
+            vbox.addWidget(dictionary_of_tabs[len(dictionary_of_tabs)-1])
+            print("MAKE A NEW TAB BRO")
+
+          signal.signal(signal.SIGALRM, makeANewTab)
+          
 
 
           t = threading.Thread(target=input)

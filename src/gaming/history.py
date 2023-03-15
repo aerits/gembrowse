@@ -5,34 +5,39 @@ import os
 class history():
      asdf = "bruh"
      timesWentBackInTime = 1
-     def __init__(self, p: str):
+     def __init__(self, p: str, tabId: str):
           self.asdf = p
+          self.id = tabId
+          self.historyFile = "./history/"+str(self.id)+"history.txt"
 
      def writeHistory(self):
           if(self.timesWentBackInTime >= 1):
-               os.remove("history.txt")
-               print("noooooo")
+               try:
+                    os.remove(self.historyFile)
+               except:
+                    print("no file")
+               #print("noooooo")
                self.timesWentBackInTime = 0
                pass
                
           else:
-               print("yayaya")
+               #print("yayaya")
                pass
                
-          hist = open("history.txt", "a+")
-          lines = hist.readlines()
+          hist = open(self.historyFile, "a")
+          #lines = hist.readlines()
           hist.seek(0)
           hist.write("\n"+self.asdf)
-          for line in lines:
-               hist.write(line)
+          #for line in lines:
+          #     hist.write(line)
           
           print(self.timesWentBackInTime)
 
           hist.close()
      def readHistory(self):
-          hist = open("history.txt", "r")
+          hist = open(self.historyFile)
           self.timesWentBackInTime+=1
-          with open(r"history.txt", 'r') as fp:
+          with open(self.historyFile, 'r') as fp:
                lines = len(fp.readlines())
           hist.seek(0)
           e = hist.readlines()

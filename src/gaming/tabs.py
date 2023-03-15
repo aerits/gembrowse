@@ -35,7 +35,7 @@ class tab(QWidget):
           self.id = id
 
           histor = "e"
-          e = history.history(histor)
+          e = history.history(histor, id)
           reload = QPushButton('↻')
           searchbox = QLineEdit('gemini://gemini.circumlunar.space')
           e.writeHistory()
@@ -45,9 +45,9 @@ class tab(QWidget):
 
 
           def bruh():
-               browse.downloadPage(searchbox.text())
-               displaypage.setText(loadPage())
-               e = history.history(searchbox.text())
+               #browse.downloadPage(searchbox.text())
+               #displaypage.setText(loadPage())
+               #e = history.history(searchbox.text())
                e.writeHistory()
 
           def goBackInTime():
