@@ -60,6 +60,7 @@ class PyQtLayout(QWidget):
                         tab_list_dictionary.pop(len(tab_list_dictionary)-1)
                      # open tabs
                      item = tab_list.checkIfYouNeedToOpenIt(len(tab_list_dictionary))
+                     print(tab_list_dictionary)
                      if(item > -1):
                         tab_list_dictionary[item] = "New Tab"
                      #print(tab_list_dictionary)

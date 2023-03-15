@@ -75,7 +75,6 @@ class tablist(QWidget):
                     self.tabs[secondTabNumber] = self.tabs[secondTabNumber+1]
                 if(numOfTabs < 2):
                     os._exit(0)
-                self.tabs.pop(numOfTabs-1)
 
                 return tabNumber-1
         return -1
@@ -83,5 +82,5 @@ class tablist(QWidget):
     def checkIfYouNeedToOpenIt(self, numOfTabs):
         if(numOfTabs < self.numberOfTabs):
             print(self.tabs)
-            return self.numberOfTabs
+            return self.numberOfTabs-1
         return -1
