@@ -39,6 +39,7 @@ class PyQtLayout(QWidget):
      threads = []
      t = threading.Thread(target=loadPage)
      threads.append(t)
+     signal = MySignal
 
      def __init__(self):
         super().__init__()
@@ -72,7 +73,7 @@ class PyQtLayout(QWidget):
                      if(item > -1):
                         tab_list_dictionary[item] = "New Tab"
                         dictionary_of_tabs[item] = tabs.tab(item)
-                        signal.sig_no_args.emit()
+                        #signal.sig_no_args.emit()
                         #vbox.addWidget(dictionary_of_tabs[item])
                         
                      #print(tab_list_dictionary)
@@ -82,15 +83,15 @@ class PyQtLayout(QWidget):
             #dictionary_of_tabs[len(dictionary_of_tabs)] = tabs.tab(len(dictionary_of_tabs))
             vbox.addWidget(dictionary_of_tabs[len(dictionary_of_tabs)-1])
             print("MAKE A NEW TAB BRO")
-          signal = MySignal
+          
 
-          signal.sig_no_args.connect(makeANewTab)
+          #self.signal.sig_no_args.connect(makeANewTab)
           
 
 
-          t = threading.Thread(target=input)
-
-          t.start()
+          self.t = threading.Thread(target=input)
+          self.t.daemon = True
+          self.t.start()
 
           #test code that iteratively adds stuff
           #to dictionary for reference
@@ -117,6 +118,7 @@ def main():
      ex = PyQtLayout()
      #sys.exit(app.exec_())
      app.exec_()
+     #PyQtLayout.t.terminate()
 
 if __name__ == '__main__':
     main()
