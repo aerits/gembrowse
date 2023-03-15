@@ -65,22 +65,33 @@ class tablist(QWidget):
         self.tabs[i] = None
 
     def checkIfYouNeedToCloseIt(self, numOfTabs):
-        for tabNumber in range(numOfTabs-1):
+        isATabClosed = [False, -1]
+        for tabNumber in range(0, numOfTabs):
             #print(self.tabs)
-            if(self.tabs[tabNumber].pressed=="pressed"):
-                self.tabClose(tabNumber)
+            try:
+                if(self.tabs[tabNumber].pressed=="pressed"):
+                    self.tabClose(tabNumber)
+                    #print(tabNumber)
+                    self.tabs.pop(tabNumber)
+                    for secondTabNumber in range(tabNumber, numOfTabs-1):
+                        self.tabs[secondTabNumber] = self.tabs[secondTabNumber+1]
+                    if(numOfTabs < 2):
+                        os._exit(0)
+                    #self.tabs.pop(tabNumber)
+                    isATabClosed = [True, tabNumber]
 
-                self.tabs.pop(tabNumber)
-                for secondTabNumber in range(tabNumber, numOfTabs-1):
-                    self.tabs[secondTabNumber] = self.tabs[secondTabNumber+1]
-                if(numOfTabs < 2):
-                    os._exit(0)
+            except:
+                #print("error? key error probably")
+                pass
 
-                return tabNumber-1
-        return -1
+        if(isATabClosed[0]==True):
+            return isATabClosed[1]
+        else:
+            return -1
 
     def checkIfYouNeedToOpenIt(self, numOfTabs):
         if(numOfTabs < self.numberOfTabs):
             print(self.tabs)
             return self.numberOfTabs-1
-        return -1
+        else:
+            return -1

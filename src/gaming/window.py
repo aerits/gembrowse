@@ -48,19 +48,23 @@ class PyQtLayout(QWidget):
 
           def input():
                 while(running):
+                    
                      # close tabs
                      item = tab_list.checkIfYouNeedToCloseIt(len(tab_list_dictionary))
+
                      if(item > -1):
-                        tab_list_dictionary.pop(item)
+                        #print(item)
+                        #tab_list_dictionary.pop(item)
                         # move back all items in tab_list_dictionary by 1 to replace the space ethat was lost
-                        for i in range(item, len(tab_list_dictionary)):
+                        for i in range(item, len(tab_list_dictionary)-1):
                           tab_list_dictionary[i] = tab_list_dictionary[i+1]
                         if(len(tab_list_dictionary) < 1):
                             os._exit(0)
                         tab_list_dictionary.pop(len(tab_list_dictionary)-1)
+
                      # open tabs
                      item = tab_list.checkIfYouNeedToOpenIt(len(tab_list_dictionary))
-                     print(tab_list_dictionary)
+                     
                      if(item > -1):
                         tab_list_dictionary[item] = "New Tab"
                      #print(tab_list_dictionary)
