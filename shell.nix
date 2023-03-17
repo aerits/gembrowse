@@ -2,6 +2,7 @@
 
 pkgs.mkShell {
   packages = [
+    pkgs.tmux
     pkgs.python39
     pkgs.python39Packages.pyqt5
     pkgs.qt5Full
