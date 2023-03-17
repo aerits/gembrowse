@@ -54,9 +54,6 @@ class tablist(QWidget):
         self.tabs[self.numberOfTabs-1] = tab('New Tab')
         self.hbox.addWidget(self.tabs[self.numberOfTabs-1])
 
-    def creatTabNow11(self):
-        self.numberOfTabs+=1
-
     def tabClose(self, i):
         #self.tabs[i].deleteLater()
         self.numberOfTabs-=1
@@ -91,7 +88,7 @@ class tablist(QWidget):
 
     def checkIfYouNeedToOpenIt(self, numOfTabs):
         if(numOfTabs < self.numberOfTabs):
-            print(self.tabs)
+            #print(self.tabs)
             return self.numberOfTabs-1
         else:
             return -1

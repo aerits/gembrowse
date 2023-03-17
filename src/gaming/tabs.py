@@ -45,9 +45,9 @@ class tab(QWidget):
 
 
           def bruh():
-               #browse.downloadPage(searchbox.text())
-               #displaypage.setText(loadPage())
-               #e = history.history(searchbox.text())
+               browse.downloadPage(searchbox.text())
+               displaypage.setText(loadPage())
+               e = history.history(searchbox.text(), id)
                e.writeHistory()
 
           def goBackInTime():

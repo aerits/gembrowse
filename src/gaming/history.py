@@ -3,26 +3,21 @@ import os
 
 
 class history():
-     asdf = "bruh"
-     timesWentBackInTime = 1
      def __init__(self, p: str, tabId: str):
           self.asdf = p
           self.id = tabId
           self.historyFile = "./history/"+str(self.id)+"history.txt"
+          self.timesWentBackInTime = 1
 
-     def writeHistory(self):
-          if(self.timesWentBackInTime >= 1):
+     def writeHistory(self):       
+          if(self.timesWentBackInTime > 0):
+               print("this is running")
                try:
                     os.remove(self.historyFile)
                except:
                     print("no file")
-               #print("noooooo")
-               self.timesWentBackInTime = 0
-               pass
-               
-          else:
-               #print("yayaya")
-               pass
+          self.timesWentBackInTime = 0
+          print(self.timesWentBackInTime)
                
           hist = open(self.historyFile, "a")
           #lines = hist.readlines()
@@ -31,7 +26,7 @@ class history():
           #for line in lines:
           #     hist.write(line)
           
-          print(self.timesWentBackInTime)
+          #print(self.timesWentBackInTime)
 
           hist.close()
      def readHistory(self):
@@ -44,10 +39,10 @@ class history():
           if self.timesWentBackInTime > lines-2:
                self.timesWentBackInTime-=1
           try:
-               print(e)
-               print(e[lines-(self.timesWentBackInTime)])
+               #print(e)
+               #print(e[lines-(self.timesWentBackInTime)])
                print(self.timesWentBackInTime)
                print(len(e))
-               return e[lines-(self.timesWentBackInTime)]
+               return e[lines-(self.timesWentBackInTime)-1]
           except:
                print("can't go back")
