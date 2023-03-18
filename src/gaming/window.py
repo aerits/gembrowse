@@ -62,7 +62,7 @@ class PyQtLayout(QWidget):
             # temp code that should just add the tab to the same container
             # and show both the tab you were on and the tab you just made
             vbox.addWidget(self.dictionary_of_tabs[len(self.dictionary_of_tabs)-1])
-            print("MAKE A NEW TAB BRO")
+            print("MAKE A NEW TAB BROdlskjafl")
           
           self.thread = QThread()
 
@@ -114,7 +114,7 @@ class PyQtLayout(QWidget):
             while(running):
         
               # close tabs
-              item = self.self.tab_list.checkIfYouNeedToCloseIt(len(self.tab_list_dictionary))
+              item = self.tab_list.checkIfYouNeedToCloseIt(len(self.tab_list_dictionary))
 
               if(item > -1):
                 #print(item)
