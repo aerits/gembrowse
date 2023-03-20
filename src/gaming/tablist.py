@@ -8,6 +8,7 @@ from PyQt5.QtCore import *
 import tabs
 import sip
 
+# create tab object
 class tab(QWidget):
     def buttonIsPressed(self):
         self.pressed="pressed"
@@ -24,6 +25,7 @@ class tab(QWidget):
         close.pressed.connect(self.buttonIsPressed)
 
 class tablist(QWidget):
+    # create horizontol layout
     hbox = QHBoxLayout()
     tabs={}
     tabOpen=False
@@ -40,7 +42,7 @@ class tablist(QWidget):
         hbox1.addLayout(self.hbox)
         hbox1.addWidget(self.newtab)
 
-        # add tabs
+        # add tabs iteratively
         for i in range(len(tablistdictionary)):
             self.tabs[i] = tab(tablistdictionary[i])
             self.hbox.addWidget(self.tabs[i])
@@ -49,6 +51,7 @@ class tablist(QWidget):
 
         self.newtab.pressed.connect(self.tabCreate)
 
+    # create tab and add to tab collection in the spot after the latest tab
     def tabCreate(self):
         self.numberOfTabs+=1
         self.tabs[self.numberOfTabs-1] = tab('New Tab')
