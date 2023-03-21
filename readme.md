@@ -1,6 +1,6 @@
 # gembrowse
 
-a new gemini browser written in python with qt
+a low quality gemini browser written in python with qt
 
 ![logo](https://github.com/aerits/gembrowse/blob/master/images/logo.png?raw=true)
 
@@ -17,6 +17,16 @@ so i decided to be some random guy coding a browser for it
 this is the latest image of the browser so far
 
 ![image of the browser](https://github.com/aerits/gembrowse/blob/master/images/gembrowse.png?raw=true)
+
+## how to run!?
+
+install pyqt5 (do not do with pip, pip does not work)
+
+go into src/gaming -> python window.py
+
+--> https://github.com/aerits/gembrowse/tree/1f61659c716af1bd64f4cf5b3a18474362d031b1 <-- last working commit do not run the latest version, i was restructuring some of my code and didn't have time to finish so it doesn't run
+
+well i think this is the last working commit
 
 ## current features
 

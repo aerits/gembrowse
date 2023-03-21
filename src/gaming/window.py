@@ -20,6 +20,7 @@ def loadPage():
 
      text=""
      # enhanced for loop
+     # this goes through the page.txt and formats it with html
      for i in page.readlines():
          if i.startswith('###'):
              text=text+"<p><h3>"+i+"</h3></p>"
@@ -39,6 +40,7 @@ def loadPage():
 t = threading.Thread()
 
 class PyQtLayout(QWidget):
+    #initialize multithreading variables
      threads = []
      t = threading.Thread(target=loadPage)
      threads.append(t)
@@ -50,6 +52,7 @@ class PyQtLayout(QWidget):
 
      # THIS IS GUI
      def UI(self):
+          #create variables for the collections for tabs
           self.dictionary_of_tabs = {0:tabs.tab(0)}
           self.tab_list_dictionary = {0:"New Tab"}
           self.tab_list = tablist.tablist(self.tab_list_dictionary)
@@ -66,6 +69,7 @@ class PyQtLayout(QWidget):
             vbox.addWidget(self.dictionary_of_tabs[len(self.dictionary_of_tabs)-1])
             print("MAKE A NEW TAB BROdlskjafl")
           
+          #multi threading things
           self.thread = QThread()
 
           self.worker = self.Worker(self.tab_list, self.tab_list_dictionary, self.dictionary_of_tabs)
@@ -96,9 +100,12 @@ class PyQtLayout(QWidget):
 
           #tab_list = tablist.tablist(tab_list_dictionary)
 
+          # create a vertical layout
           vbox = QVBoxLayout()
           vbox.setContentsMargins(0,0,0,0)
           #vbox.setAlignment(QtCore.Qt.AlignTop)
+          
+          # put the tab list and the page into the layout
           vbox.addWidget(self.tab_list)
           vbox.addWidget(self.dictionary_of_tabs[0])
           self.setLayout(vbox)
@@ -116,9 +123,11 @@ class PyQtLayout(QWidget):
             self.finished = pyqtSignal()
             super().__init__()
 
+        # tell the main thread that there needs to be a new tab
         def sendTabSignal(self):
             self.finished.emit()
 
+        # check if a new tab needs to be created or deleted
         def run(self):
             while(running):
         
