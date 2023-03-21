@@ -35,7 +35,9 @@ def loadPage():
      text = text.replace('#', '')
 
      return text
+
 t = threading.Thread()
+
 class PyQtLayout(QWidget):
      threads = []
      t = threading.Thread(target=loadPage)
@@ -66,7 +68,8 @@ class PyQtLayout(QWidget):
           
           self.thread = QThread()
 
-          self.worker = self.Worker()
+          self.worker = self.Worker(self.tab_list, self.tab_list_dictionary, self.dictionary_of_tabs)
+          self.worker.__init__(self.tab_list, self.tab_list_dictionary, self.dictionary_of_tabs)
 
           self.worker.moveToThread(self.thread)
 
@@ -105,7 +108,13 @@ class PyQtLayout(QWidget):
           self.show()
 
      class Worker(QObject):
-        finished = pyqtSignal()
+
+        def __init__(self, tab_list, tab_list_dictionary, dictionary_of_tabs):
+            self.tab_list = tab_list
+            self.tab_list_dictionary = tab_list_dictionary
+            self.dictionary_of_tabs = dictionary_of_tabs
+            self.finished = pyqtSignal()
+            super().__init__()
 
         def sendTabSignal(self):
             self.finished.emit()
