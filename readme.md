@@ -26,6 +26,8 @@ go into src/gaming -> python window.py
 
 --> https://github.com/aerits/gembrowse/tree/1f61659c716af1bd64f4cf5b3a18474362d031b1 <-- last working commit do not run the latest version, i was restructuring some of my code and didn't have time to finish so it doesn't run
 
+well i think this is the last working commit
+
 ## current features
 
 * you can load pages
