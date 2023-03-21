@@ -117,6 +117,7 @@ class PyQtLayout(QWidget):
      class Worker(QObject):
 
         def __init__(self, tab_list, tab_list_dictionary, dictionary_of_tabs):
+            # no way pointers in python
             self.tab_list = tab_list
             self.tab_list_dictionary = tab_list_dictionary
             self.dictionary_of_tabs = dictionary_of_tabs
